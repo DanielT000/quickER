@@ -55,4 +55,8 @@ int main(){
 			break;
 		}
 	}
+	cout << "The waiting times for the hospitals are: ";
+	for (int i = 0; i < 10; i++){
+		cout << ERS[i] << ": " << setw(10) << data[ans][i] << '\n';
+	}
 }

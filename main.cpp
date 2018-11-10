@@ -2,7 +2,7 @@
 #include <time.h>
 #include "distance.h"
 #include "greeting.h"
-#include <conio.h>
+#include "data.h"
 using namespace std;
 typedef pair<double,int> di;
 const string currentDateTime() {

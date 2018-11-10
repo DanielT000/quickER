@@ -1,5 +1,6 @@
 #include <bits/stdc++.h>
 #include <time.h>
+#include "distance.h"
 using namespace std;
 
 const string currentDateTime() {

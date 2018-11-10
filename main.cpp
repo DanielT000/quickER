@@ -2,6 +2,7 @@
 #include <time.h>
 #include "distance.h"
 #include "greeting.h"
+#include <conio.h>
 using namespace std;
 typedef pair<double,int> di;
 string ERS[10] = {"CGH", "KKHC", "KKHW", "KTPH", "NTFH", "NUH",	"NUHC",	"SGH", "SKGH", "TTSH"};
@@ -44,23 +45,27 @@ int main(){
     time += curr_time[15];
     cout << time << '\n';
     int ans = upper_bound(times,times+48,time) - times - 1;
-    printf("%d\n",ans);
-  	cout << "The timing now is " << times[ans] << " and the waiting times for the hospitals are:\n" ;
+  	cout << "\nThe waiting times for the hospitals are:\n" ;
+  	priority_queue<di,vector<di>,greater<di> > pq;
 	for (int i = 0; i < 10; i++){
-		cout << setw(5) << ERS[i] << setw(2) << ": " << setw(10) << data[ans][i] << '\n';
+        pq.push(di(data[ans][i],i));
 	}
-	cout << "Please enter your coordinates to continue: \n";
+	for (int i = 0; i < 10; i++){
+        di pqq = pq.top(); pq.pop();
+        int foo = pqq.first, bar =pqq.second;
+        cout << setw(5) << ERS[bar] << setw(2) << ": " <<setw(10) << foo << '\n';
+ 	}
+	cout << "\nPlease enter your coordinates to continue: \n";
 	double lat, lon;
 	cin >> lat >> lon;
 	dd cur = dd(lat,lon);
-	priority_queue<di,vector<di>,greater<di> > pq;
 	for (int i = 0; i < 10; i++){
         pq.push(di(tiem(distance(cur,ERlocations[i]))+(double)data[ans][i],i));
 	}
 	while (!pq.empty()){
         di pqq = pq.top(); pq.pop();
         int foo = pqq.first, bar = pqq.second;
-        cout << "Total time to receive treatment "<< ERS[bar] << " will take " << foo << " minutes\n";
+        cout << "Total time to receive treatment at "<< ERS[bar] << " will take " << foo << " minutes\n";
 	}
 
 }

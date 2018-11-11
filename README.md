@@ -1,2 +1,2 @@
-# quickER
-quickER is a program that saves lives by making waiting times for treatments in Emergency Rooms quickER.
+#quickER
+quickER is a program that helps patients plan their trip to Emergency Rooms to receive treatment quickER.

@@ -23,28 +23,28 @@ int main(){
     time += " ";
     time += curr_time[14];
     time += curr_time[15];
-    cout << time << '\n';
     int ans = upper_bound(times,times+48,time) - times - 1;
-  	cout << "\nThe waiting times for the hospitals are:\n" ;
+    cout << "\nPlease enter your coordinates to continue: \n";
+	double lat, lon;
+	cin >> lat >> lon;
+	dd cur = dd(lat,lon);
+  	cout << setw(8) << "\nHospital              Travelling time                       Waiting time\n\n";
   	priority_queue<di,vector<di>,greater<di> > pq;
 	for (int i = 0; i < 10; i++){
-        pq.push(di(data[ans][i],i));
+        pq.push(di(tiem(distance(cur,ERlocations[i])),i));
 	}
 	for (int i = 0; i < 10; i++){
         di pqq = pq.top(); pq.pop();
         int foo = pqq.first, bar =pqq.second;
-        cout << setw(5) << ERS[bar] << setw(2) << ": " <<setw(10) << foo << '\n';
+        cout << setw(5) << ERS[bar] << setw(2) << ": " <<setw(30) << (int)foo << "                                 " << data[ans][bar] << '\n';
  	}
-	cout << "\nPlease enter your coordinates to continue: \n";
-	double lat, lon;
-	cin >> lat >> lon;
-	dd cur = dd(lat,lon);
 	for (int i = 0; i < 10; i++){
         pq.push(di(tiem(distance(cur,ERlocations[i]))+(double)data[ans][i],i));
 	}
+	cout << "\n\nHere are the total times for treatment at each hospital: \n";
 	while (!pq.empty()){
         di pqq = pq.top(); pq.pop();
         int foo = pqq.first, bar = pqq.second;
-        cout << "Total time to receive treatment at "<< ERS[bar] << " will take " << foo << " minutes\n";
+        cout << setw(5) << ERS[bar] << ":" << setw(20) << foo << " min\n";
 	}
 }

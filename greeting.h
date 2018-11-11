@@ -9,5 +9,5 @@ void greeting(){
     cout << " \\__, | \\__,_||_| \\___||_|\\_\\|______||_|  \\_\\\n";
     cout << "    | |                                      \n";
     cout << "    |_|                                      \n";
-	cout<<"\nWelcome to quickER. quickER is a program that saves lives by making waiting times for treatments in Emergency Rooms quickER.";
+	cout<<"\nWelcome to quickER.\nquickER is a program that saves lives by making waiting times for treatments in Emergency Rooms quickER.";
   }
